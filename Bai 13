@@ -1,0 +1,46 @@
+/*
+Lập chương trình thực hiện các công việc sau:
+a) Nhập một mảng gồm có N (với N là số nguyên (0 < N < 10) nhập vào từ bàn phím)
+số nguyện bất kì từ bàn phím.
+In ra màn hình mảng vừa nhập dưới dạng một dãy số.
+b) Nhập một số nguyện X (X < 10) bất kì từ bàn phím. 
+Tính và in ra số lượng các số trong dãy có giá trị bằng X.
+*/
+
+#include <stdio.h>
+#include <conio.h>
+
+int main()
+{
+	int n, i, j = 0, a[9], b[9], x, dem = 0;
+	printf("\nNhap vao so nguyen 0 < N < 10\n N = ");
+	scanf_s("%d", &n);
+	for (i = 0; i < n; i++)
+	{
+		printf("\nNhap vao phan tu thu %d: ", i + 1);
+		scanf_s("%d", &a[i]);
+	}
+	printf("\nMang vua nhap la: \n");
+	for (i = 0; i < n; i++)
+	{
+		printf("%5d", a[i]);
+	}
+	printf("\nNhap vao so nguyen X < 10: \nX = ");
+	scanf_s("%d", &x);
+	for (i = 0; i < n; i++)
+	{
+		if (a[i] == x)
+		{
+			b[dem] = i;
+			dem++;
+		}
+	}
+	printf("\nTrong mang co %d so trung voi gia tri cua X.", dem);
+	printf("\nVi tri cua cac so trung voi gia tri X la: ");
+	for (i = 0; i < dem; i++)
+	{
+		printf("%4d", b[i] + 1);
+	}
+	_getch();
+	return 0;
+}
