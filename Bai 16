@@ -1,0 +1,49 @@
+/*
+Đề 16:
+Lập chương trình thực hiện các công việc sau:
+a) Nhập 2 số nguyên M,N (Biết M,N thuộc khoảng từ 1 đến 2000) từ bàn phím.
+b) Kiểm tra xem M, N có phải là cặp số thân thiết không. In kết quả ra màn hình.
+Chú ý: Cặp số thân thiết là số này bằng tổng các ước của số kia (trừ số kia ra) và ngược lại.
+Ví dụ :220 và 284 là một cặp số thân thiết.
+*/
+#include <stdio.h>
+#include <conio.h>
+
+int main()
+{
+	int N, M, i, j, TongUocM = 0, TongUocN = 0;
+
+	do
+	{
+		printf("\nNhap vao so nguyen 1 < M < 2000: \nN = ");
+		scanf_s("%d", &N);
+		if (N <= 1 || N >= 2000)
+		{
+			printf("\nSo N vua nhap khong hop le, vui long nhap lai !");
+		}
+	} while (N <= 1 || N >= 2000);
+	do
+	{
+		printf("\nNhap vao so nguyen 1 < M < 2000: \nM = ");
+		scanf_s("%d", &M);
+		if (M <= 1 || M >= 2000)
+		{
+			printf("\nSo M vua nhap khong hop le, vui long nhap lai !");
+		}
+	} while (M <= 1 || M >= 2000);
+	for (i = 1; i < N; i++)
+	{
+		if (N % i == 0)
+			TongUocN += i;
+	}
+	for (i = 1; i < M; i++)
+	{
+		if (M % i == 0)
+			TongUocM += i;
+	}
+	if (TongUocM == N && TongUocN == M)
+		printf("Hai so %d va %d la hai so than thiet.", N, M);
+	else printf("Hai so %d va %d khong phai la hai so than thiet.", N, M);
+	_getch();
+	return 0;
+}
