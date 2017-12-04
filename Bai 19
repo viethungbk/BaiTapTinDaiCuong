@@ -1,0 +1,42 @@
+/*
+Đề 19:
+Lập chương trình thực hiện các công việc sau:
+Nhập 1 số nguyên N>0 bất kì thuộc hệ cơ số 10 từ bàn phím.
+Chuyển số đó thành số trong hệ cơ số 2
+In kết quả ra màn hình
+(Đề tương tự : Chuyển về hệ cơ số 8.
+*/
+
+#include <stdio.h>
+#include <conio.h>
+
+int main()
+{
+	
+	int N, i, j = 0, temp, a[1000], b;
+
+	do
+	{
+		printf("\nNhap vao so nguyen duong N = ");
+		scanf_s("%d", &N);
+		if (N <= 0)
+		{
+			printf("\nSo N vua nhap khong hop le, vui long nhap lai !");
+		}
+	} while (N <=0);
+
+	temp = N;
+
+	printf("\nSo %d sau khi duoc chuyen ve he nhi phan la:  ", N);
+	while (temp != 0)
+	{
+		a[j] = temp % 2;
+		temp /= 2;
+		j++;
+	}
+	for (i = j - 1;i >= 0; i--)
+		printf("%d", a[i]);
+
+	_getch();
+	return 0;
+}
