@@ -1,0 +1,57 @@
+/*
+Lập chương trình thực hiện các công việc sau:
+a) Nhập một số nguyên N (0 < N < 200) từ bàn phím.
+b) Tìm và in ra các số nguyên tố trong khoảng (0;N).
+c) Tính tổng các số vừa tìm được và thông báo ra màn hình.
+*/
+
+#include <stdio.h>
+#include <conio.h>
+
+int main()
+{
+	int N, i, j, flag = 0, tong = 0;
+
+	// Nhap N
+	do
+	{
+		printf("\nNhap vao so nguyen 0 < N < 200 : \nN = ");
+		scanf_s("%d", &N);
+		if (N <= 0 || N >= 200)
+			printf("\nN vua nhap khong hop le, xin kiem tra lai!");
+	} while (N <= 0 || N >= 200);
+
+	// Kiem tra so nguyen to: 
+	if (N == 1)
+	{
+		printf("Trong khoang (0 ; 1) khong so nguyen to nao nen tong cua chung bang 0.");
+	}
+	else if (N == 2)
+	{
+		printf("\nTrong khoang(0 ; 2) co so 1 la so nguyen to, tong cac so nguyen to trong khoang (0 ; 2) bang 1.");
+	}
+	else
+	{
+		printf("\nCac so nguyen to trong khoang (0 ; %d) la: \n", N);
+		for (i = 2; i < N; i++)
+		{
+			for (j = 2; j < i; j++)
+			{
+				if (i % j == 0)
+				{
+					flag = 1;
+				}
+			}
+			if (flag == 0)
+			{
+				printf("%d     ", i);
+			}
+			flag = 0;
+			tong += i;
+		}
+		printf("\nTong cac so nguyen to trong khoang (0 ; %d) la %d", N, tong);
+	}
+
+	_getch();
+	return 0;
+}
