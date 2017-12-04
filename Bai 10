@@ -1,0 +1,71 @@
+/*
+Đề 10:
+Lập chương trình thực hiện các công việc sau:
+1. Nhập 3 số thực a,b,c bất kì.
+2. Giải và biện luận phương trình bậc 2:
+ax2+bx+c=0
+Chú ý:Tính cả nghiệm khi a=0 và trường hợp nghiệm phức.
+3. Thông báo kết quả ra màn hình.
+*/
+
+#include <stdio.h>
+#include <conio.h>
+#include <math.h>
+
+int main()
+{
+	float a, b, c, delta, x1, x2, PhanThuc, PhanAo;
+
+	// Nhap vao ba so thuc a, b, c:
+	printf("\nNhap vao so thuc a = ");
+	scanf_s("%f", &a);
+	printf("\nNhap vao so thuc b = ");
+	scanf_s("%f", &b);
+	printf("\nNhap vao so thuc c = ");
+	scanf_s("%f", &c);
+	
+	// Giai phuong trinh b2: 
+	if (a == 0) // bx + c = 0
+	{
+		if (b == 0) // c = 0
+		{
+			if (c == 0)
+			{
+				printf("\nPhuong trinh co vo so nghiem!");
+			}
+			else
+			{
+				printf("\nPhuong trinh vo nghiem!");
+			}
+		}
+		else
+		{
+			x1 = -c / b;
+			printf("\nPhuong trinh co nghiem x = %f", x1);
+		}
+	}
+	else // ax2 + bx + c = 0
+	{
+		delta = b*b - 4*a*c;
+		if (delta == 0)
+		{
+			x1 = -b / (2 * a);
+			printf("\nPhuong trinh co nghiem kep x1 = x2 = %f", x1);
+		}
+		else if (delta > 0)
+		{
+			x1 = (-b + sqrt(delta) / (2 * a));
+			x2 = (-b - sqrt(delta) / (2 * a));
+			printf("\nPhuong trinh co 2 nghiem: \nx1 = %f\nx2 = %f", x1, x2);
+		}
+		else
+		{
+			delta = sqrt(abs((int)delta));
+			PhanThuc = -b / (2 * a);
+			PhanAo = delta / (2 * a);
+			printf("\nPhupng trinh co nghiem kep: \nx1 = %.3f + %.3fi \nx2 = %.3f - %.3fi", PhanThuc, PhanAo, PhanThuc, PhanAo);
+		}
+	}
+	_getch();
+	return 0;
+}
