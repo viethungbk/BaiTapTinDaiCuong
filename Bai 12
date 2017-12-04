@@ -1,0 +1,51 @@
+/*
+Đề 12:
+Lập chương trình thực hiện các công việc sau:
+a) Nhập một số nguyên N (0 < N < 1000) từ bàn phím.
+b) Tìm và in ra các số hoàn thiện trong khoảng (0;N).
+c) Tính tổng các số vừa tìm được và thông báo ra màn hình.
+Chú ý: Số hoàn thiện là số nguyên dương mà tổng các ước dương của nó bằng 2 lần chính nó.
+(Ví dụ : Số 6 có tổng các ước dương là 1+2+3+6=12 gấp 2 lần 6 nên số 6 là số hoàn thiện.
+*/
+
+#include <stdio.h>
+#include <conio.h>
+
+int main()
+{
+	
+	int N, j, i, TongUoc = 0, TongSo = 0;
+	printf("\nNhap vao so nguyen 0 < N < 1000 : \nN = ");
+	scanf_s("%d", &N);
+	if (N == 1)
+	{
+		printf("\nTrong doan (0 ; 1) khong co so nguyen nao la so hoan hao nen trong cua chung bang 0.");
+	}
+	else if (N == 2)
+	{
+		printf("\nTrong doan (0 ; 2) co so 1 la so hoan hao, tong cac so hoan hao trong (0 ; 2) bang 1.");
+	}
+	else
+	{
+		printf("\nCac so hoan hao trong doan (0 ; %d) la : ", N);
+		for (i = 1; i <= N; i++)
+		{
+			for (j = 1; j <= i; j++)
+			{
+				if (i % j == 0)
+					TongUoc += j;
+			}
+			if (2*i == TongUoc)
+			{
+				printf("%d     ", i);
+				TongSo += i;
+			}
+			TongUoc = 0;
+		}
+		printf("\nTong cac so tren la: %d", TongSo);
+	}
+
+
+	_getch();
+	return 0;
+}
