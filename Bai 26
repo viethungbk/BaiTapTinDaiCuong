@@ -1,0 +1,33 @@
+/*
+Đề 26:
+Viết một chương trình nhập vào dãy số nguyên theo thứ tự giảm dần,
+nếu nhập sai quy cách thì yêu cầu nhập lại.Chương trình sẽ dừng khi số lượng phần tử là 7.
+In dãy số vừa nhập theo định dạng như sau a,b,c,d... Trong đó a,b,... là những số vừa nhập.
+*/
+
+#include <stdio.h>
+#include <conio.h>
+
+int main()
+{
+	int a[7], i = 1;
+	printf("\nNhap vao mot day so nguyen theo thu tu giam dan : ");
+	printf("\nNhap vao phan tu thu 1: ");
+	scanf_s("%d", &a[0]);
+	while (i < 7)
+	{
+		do
+		{
+			printf("Nhap vao phan tu thu %d: ", i + 1);
+			scanf_s("%d", &a[i]);
+		} while (a[i] >= a[i-1]);
+		i++;
+	}
+	printf("\nDay so vua nhap la: ");
+	for (i = 0; i < 7; i++)
+	{
+		printf("%5d", a[i]);
+	}
+	_getch();
+	return 0;
+}
