@@ -1,0 +1,43 @@
+/*
+Đề 22:
+Lập chương trình thực hiện các công việc sau:
+a) Nhập một giá trị thực x radian (0 <= x < 10) từ bàn phím.
+b) Tính sin(x) với độ chính xác 0.0001 dựa vào công thức sau:
+sin(x)=x-x3/3!+x5/5!-...+(-1)^n*x^(2n+1)/(2n+1)!
+Kiểm tra điều kiện đầu vào, nếu sai yêu cầu nhập lại. Kết quả cần hiện 6 chữ số sau dấu phẩy.
+Gợi ý : Sử dụng vòng lặp while để tính với điều kiện dừng khi
+x2n+1!/(2n+1)! < epsilon = 0.0001
+(Đề tương tự : Tính cos(x))
+*/
+
+#include <stdio.h>
+#include <conio.h>
+#include <math.h>
+const float epsilon = 0.01;
+
+int main()
+{
+
+	float x, sinx = 0;
+	int n = 0, gt = 1, i;
+	do
+	{
+		printf("\nNhap vao so thuc 0 <= x < 10 (don vi radian) \nx = ");
+		scanf_s("%f", &x);
+	} while (x < 0 || x >= 10);
+
+	while ((pow(x, (2 * n + 1)) / gt) >= epsilon)
+	{
+		gt = 1;
+		for (i = 1; i <= (2*n + 1); i++)
+		{
+			gt *= i;
+		}
+		sinx += pow(-1, n) * pow(x, (2*n + 1)) / gt;
+		n++;
+	}
+	printf("sin(x) = %f", sinx);
+
+	_getch();
+	return 0;
+}
