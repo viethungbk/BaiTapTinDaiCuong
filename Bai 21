@@ -1,0 +1,50 @@
+/*
+Lập chương trình thực hiện các công việc sau:
+a) Nhập một số nguyên N (0 < N < 10) từ bàn phím.
+b) Nhập một mảng có N số nguyên từ bàn phím. In ra mảng vừa nhập từ bàn phím dưới dạng một dãy số
+c) Tính tổng các phần tử xung quanh của mảng. Hiện kết quả ra màn hình.
+(Phần tử xung quanh là phần tử bằng tổng 2 phần tử xung quanh nó). Ví dụ các phần tử được tô đỏ
+dưới đây là phần tử xung quanh:
+1 5 4 3 6 3 3 4 5 1 2 8 6
+*/
+
+#include <stdio.h>
+#include <conio.h>
+
+int main()
+{
+	int N, i, a[9], tong = 0;
+
+	do
+	{
+		printf("\nNhap vao so nguyen 0 < N < 10: \nN = ");
+		scanf_s("%d", &N);
+		if (N <= 0 || N >=10)
+		{
+			printf("\nSo N vua nhap khong hop le, vui long nhap lai !");
+		}
+	} while (N <= 0 || N >= 10);
+	for (i = 0; i < N; i++)
+	{
+		printf("\nNhap vao phan tu thu %d:  ", i + 1);
+		scanf_s("%d", &a[i]);
+	}
+	printf("\nMang vua nhap la: ");
+	for (i = 0; i < N; i++)
+	{
+		printf("%5d", a[i]);
+	}
+	printf("\nCac phan tu xung quanh la:  ");
+	for (i = 0; i < N; i++)
+	{
+		if (a[i] == a[i + 1] + a[i - 1])
+		{
+			printf("%5d", a[i]);
+			tong += a[i];
+		}
+	}
+	printf("\nTong cua cac phan tu xung quanh la: %d", tong);
+
+	_getch();
+	return 0;
+}
